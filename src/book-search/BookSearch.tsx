@@ -90,8 +90,6 @@ const BookSearch = () => {
                         </div>
                     </li>)}
             </ul>
-            {<pre>{JSON.stringify(allAvailableBooks, null, 4)}</pre>
-            }
         </>
     );
 };

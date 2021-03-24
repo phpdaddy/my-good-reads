@@ -2,10 +2,26 @@ import React, {useEffect, useState} from "react";
 import {getBooksByType} from "./book-search.service";
 import '../styles/BookSearch.scss';
 
+type Book = {
+    volumeInfo: {
+        title: string,
+        imageLinks: {
+            smallThumbnail: string
+        },
+        authors: string[],
+        publisher: string,
+        publishedDate: string,
+        description: string
+    }
+}
+type AvailableBooks = {
+    items: Book[],
+}
+
 const BookSearch = () => {
     const [bookType, updateBookType] = useState("");
     const [bookTypeToSearch, updateBookTypeToSearch] = useState("");
-    const [allAvailableBooks, setAllAvailableBooks] = useState({} as any);
+    const [allAvailableBooks, setAllAvailableBooks] = useState({} as AvailableBooks);
 
     async function requestBooks() {
         if (bookTypeToSearch) {
@@ -61,7 +77,7 @@ const BookSearch = () => {
                 </div>
             </div>
             <ul className={'resultsList'}>
-                {allAvailableBooks?.items?.map((b: any) =>
+                {allAvailableBooks?.items?.map((b: Book) =>
                     <li><h2>{b.volumeInfo.title}</h2>
                         <div>
                             <img src={b.volumeInfo.imageLinks.smallThumbnail}/>

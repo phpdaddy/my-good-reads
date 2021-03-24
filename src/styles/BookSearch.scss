@@ -1,0 +1,23 @@
+@import './variables';
+
+.resultsList {
+  li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    > div {
+      display: flex;
+      align-items: end;
+
+      > img {
+        margin-right: 20px;
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
